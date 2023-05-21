@@ -1,6 +1,6 @@
-import Card from "../Card/Card.jsx";
+import Card from "../card/Card.jsx";
 
-export default function Cards({ characters }) {
+export default function Cards({ characters, onClose }) {
   const cardsContainer = {
     display: "flex",
     flexWrap: "Wrap",
@@ -12,12 +12,14 @@ export default function Cards({ characters }) {
       {characters.map((characters) => (
         <Card
           key={characters.id}
+          id={characters.id}
           name={characters.name}
           status={characters.status}
           species={characters.species}
           gender={characters.gender}
           origin={characters.origin?.name}
           image={characters.image}
+          onClose={onClose}
         />
       ))}
     </div>

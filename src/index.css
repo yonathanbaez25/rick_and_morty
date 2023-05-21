@@ -5,11 +5,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url(https://wallpapers.com/images/featured/2qy1xyshw0h9uxk4.jpg);
+  background-image: url(https://images6.alphacoders.com/101/1014033.jpg);
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: cover;
 }
-
+/*  
+https://images.alphacoders.com/876/876589.jpg
+https://images6.alphacoders.com/876/876591.jpg
+https://images6.alphacoders.com/101/1014033.jpg
+https://images4.alphacoders.com/606/606024.jpg
+*/
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
