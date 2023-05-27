@@ -1,10 +1,39 @@
 import { Link } from "react-router-dom";
 import style from "./Card.module.css";
+import { connect } from "react-redux";
+import { addFav, removeFav } from "../../redux/actions";
+import { useEffect, useState } from "react";
 
-export default function Card(props) {
-  //console.log(props);
+function Card(props) {
+  const [isFav, setIsFav] = useState(false);
+
+  const handleFavorite = (event) => {
+    if (isFav) {
+      setIsFav(false);
+      props.removeFav(props.id);
+    } else {
+      setIsFav(true);
+      props.addFav(props);
+    }
+  };
+
+  useEffect(() => {
+    props.myFavorites.forEach((fav) => {
+      if (fav.id === props.id) {
+        setIsFav(true);
+      }
+    });
+  }, [props.myFavorites]);
+
   return (
     <div className={style.container} key={props.id}>
+      <div className={style.favContainer}>
+        {isFav ? (
+          <button onClick={handleFavorite}>❤️</button>
+        ) : (
+          <button onClick={handleFavorite}>🤍</button>
+        )}
+      </div>
       <div className={style.buttonContainer}>
         <button onClick={() => props.onClose(props.id)}>X</button>
       </div>
@@ -21,3 +50,18 @@ export default function Card(props) {
     </div>
   );
 }
+
+function mapStateToProps(state) {
+  return {
+    myFavorites: state.myFavorites,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addFav: (character) => dispatch(addFav(character)),
+    removeFav: (id) => dispatch(removeFav(id)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Card);

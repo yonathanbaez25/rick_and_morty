@@ -8,6 +8,9 @@ export default function NavBar(props) {
       <NavLink to="/About">
         <button>About</button>
       </NavLink>
+      <NavLink to="/favorites">
+        <button>Favorites</button>
+      </NavLink>
       <NavLink to="/Home">
         <button>Home</button>
       </NavLink>
