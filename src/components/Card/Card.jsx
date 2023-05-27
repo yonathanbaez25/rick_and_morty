@@ -1,29 +1,38 @@
 import { Link } from "react-router-dom";
 import style from "./Card.module.css";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addFav, removeFav } from "../../redux/actions";
 import { useEffect, useState } from "react";
 
-function Card(props) {
+export default function Card(props) {
   const [isFav, setIsFav] = useState(false);
+
+  const { myFavorites } = useSelector((state) => state);
+
+  const dispatch = useDispatch();
 
   const handleFavorite = (event) => {
     if (isFav) {
       setIsFav(false);
-      props.removeFav(props.id);
+      dispatch(removeFav(props.id));
     } else {
       setIsFav(true);
-      props.addFav(props);
+      dispatch(addFav(props));
     }
   };
 
   useEffect(() => {
-    props.myFavorites.forEach((fav) => {
+    myFavorites.forEach((fav) => {
       if (fav.id === props.id) {
         setIsFav(true);
       }
     });
-  }, [props.myFavorites]);
+  }, [myFavorites]);
+
+  const allClose = () => {
+    props.onClose(props.id);
+    dispatch(removeFav(props.id));
+  };
 
   return (
     <div className={style.container} key={props.id}>
@@ -35,7 +44,7 @@ function Card(props) {
         )}
       </div>
       <div className={style.buttonContainer}>
-        <button onClick={() => props.onClose(props.id)}>X</button>
+        <button onClick={allClose}>X</button>
       </div>
       <Link to={`/detail/${props.id}`}>
         <img src={props.image} alt="" />
@@ -51,17 +60,17 @@ function Card(props) {
   );
 }
 
-function mapStateToProps(state) {
-  return {
-    myFavorites: state.myFavorites,
-  };
-}
+// function mapStateToProps(state) {
+//   return {
+//     myFavorites: state.myFavorites,
+//   };
+// }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    addFav: (character) => dispatch(addFav(character)),
-    removeFav: (id) => dispatch(removeFav(id)),
-  };
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     addFav: (character) => dispatch(addFav(character)),
+//     removeFav: (id) => dispatch(removeFav(id)),
+//   };
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Card);
+// export default connect(mapStateToProps, mapDispatchToProps)(Card);
