@@ -1,18 +1,19 @@
 .container {
-  padding-top: 20px;
   padding-bottom: 15px;
-  margin: auto;
 }
 
 .container input {
   border-radius: 5px;
-  height: 25px;
-  margin-right: 5px;
+  height: 40px;
+  width: 300px;
+  margin-right: 10px;
 }
 
 .container button {
   border-radius: 5px;
-  height: 25px;
+  font-size: 18px;
+  height: 38px;
+  width: 100px;
   background-color: darkgreen;
   color: whitesmoke;
   box-shadow: 0 5px 5px black;
