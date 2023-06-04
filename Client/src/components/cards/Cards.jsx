@@ -6,7 +6,6 @@ export default function Cards({ characters, onClose }) {
     flexWrap: "Wrap",
     justifyContent: "space-evenly",
   };
-  //console.log(characters);
   return (
     <div style={cardsContainer}>
       {characters.map((characters) => (

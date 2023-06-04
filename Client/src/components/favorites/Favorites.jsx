@@ -24,14 +24,12 @@ export default function Favorites({ onClose }) {
     e.preventDefault();
     //const { value } = e.taget;
     dispatch(orderCards(e.target.value));
-    console.log(e.target.value);
   };
 
   const handleFilter = (event) => {
     event.preventDefault();
     const { value } = event.target;
     dispatch(filterCards(value));
-    console.log(value);
   };
 
   const resetBtton = () => {

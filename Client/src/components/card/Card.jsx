@@ -33,6 +33,7 @@ export default function Card(props) {
     props.onClose(props.id);
     dispatch(removeFav(props.id));
   };
+  //console.log(props.id);
 
   return (
     <div className={style.container} key={props.id}>
