@@ -27,6 +27,6 @@ app.use(cors());
 
 app.use("/rickandmorty/character", rickandmortyRouter);
 app.use("/rickandmorty/login", loginRouter);
-app.use("/fav", favRouter);
+app.use("/rickandmorty/fav", favRouter);
 
 module.exports = app;
