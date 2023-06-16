@@ -9,7 +9,7 @@ const reducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case "ADD_FAV":
+    case ADD_FAV:
       return { ...state, myFavorites: payload, allCharacters: payload };
     case REMOVE_FAV:
       return { ...state, myFavorites: payload };

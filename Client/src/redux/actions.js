@@ -7,7 +7,7 @@ export const addFav = (character) => {
     try {
       const { data } = await axios.post(endpoint, character);
       return dispatch({
-        type: "ADD_FAV",
+        type: ADD_FAV,
         payload: data,
       });
     } catch (error) {
@@ -22,7 +22,7 @@ export const removeFav = (id) => {
     try {
       const { data } = await axios.delete(endpoint);
       return dispatch({
-        type: "REMOVE_FAV",
+        type: REMOVE_FAV,
         payload: data,
       });
     } catch (error) {

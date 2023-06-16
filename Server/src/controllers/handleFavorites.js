@@ -7,13 +7,15 @@ const postFav = (req, res) => {
 
 const deleteFav = (req, res) => {
   const { id } = req.params;
-
-  const filteredFav = myFavorites.filter((element) => {
-    element.id !== id;
+  //console.log(myFavorites);
+  const filterCharacter = myFavorites.filter((ch) => {
+    ch.id !== Number(id);
+    //console.log(ch.id);
+    //console.log(2023);
   });
-  myFavorites = filteredFav;
-
-  return res.status(200).json(myFavorites);
+  console.log(filterCharacter);
+  myFavorites = filterCharacter;
+  return res.status(200).json(filterCharacter);
 };
 
 module.exports = {
