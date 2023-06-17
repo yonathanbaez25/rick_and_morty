@@ -1,15 +1,26 @@
-const User = require("../DB_connection");
+const { User } = require("../DB_connection");
 
-const login = (req, res) => {
+const login = async (req, res) => {
   const { email, password } = req.query;
-  if (!email || email.length === 0) {
+  if (!email) {
     return res.status(404).send("Faltan datos");
   }
-  if (!password || password.length === 0) {
+  if (!password) {
     return res.status(404).send("Faltan datos");
   }
   try {
-  } catch (error) {}
+    const user = await User.findAll({
+      where: { email },
+    });
+    const userPassword = user[0].dataValues.password;
+    if (userPassword === password) {
+      return res.json({ access: true });
+    } else {
+      return res.json({ access: false });
+    }
+  } catch (error) {
+    return res.status(404).json({ err: error.message });
+  }
 };
 
 module.exports = login;
